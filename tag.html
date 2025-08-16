@@ -46,7 +46,7 @@
                     const params = new URLSearchParams(window.location.search);
                     const tParam = params.get('t')
 
-                    const res = await fetch("http://localhost:5000/server/tag/" + tParam);
+                    const res = await fetch("/server/tag/" + tParam);
                     const data = await res.json();
 
                     this.tag = tParam.toString().charAt(0).toUpperCase() + String(tParam).slice(1);

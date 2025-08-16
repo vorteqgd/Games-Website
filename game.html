@@ -68,8 +68,8 @@
 
                 async loadData() {
                     const [gamesRes, gameRes] = await Promise.all([
-                        fetch("http://localhost:5000/server/popular"),
-                        fetch("http://localhost:5000/server/game/" + idParam)
+                        fetch("/server/popular"),
+                        fetch("/server/game/" + idParam)
                     ]);
                     const data = await gameRes.json();
                     this.games = await gamesRes.json();

@@ -63,9 +63,9 @@
 
                 async loadData() {
                     const [popularRes, newRes, tagsRes] = await Promise.all([
-                        fetch("http://localhost:5000/server/popular"),
-                        fetch("http://localhost:5000/server/new"),
-                        fetch("http://localhost:5000/server/popularTags")
+                        fetch("/server/popular"),
+                        fetch("/server/new"),
+                        fetch("/server/popularTags")
 
                     ]);
 

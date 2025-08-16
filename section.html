@@ -46,7 +46,7 @@
                     const params = new URLSearchParams(window.location.search);
                     const sParam = params.get('s')
 
-                    const res = await fetch("http://localhost:5000/server/" + sParam);
+                    const res = await fetch("/server/" + sParam);
                     const data = await res.json();
 
                     this.name = sParam;

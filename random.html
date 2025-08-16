@@ -9,7 +9,7 @@
 
 <body>
     <script>
-        fetch("http://localhost:5000/server/ids")
+        fetch("/server/ids")
             .then(response => response.json())
             .then(data => {
                 window.location.href = `game.html?id=${data[Math.floor(Math.random() * data.length)]}`

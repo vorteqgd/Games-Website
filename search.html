@@ -49,7 +49,7 @@
                 async loadData() {
                     const params = new URLSearchParams(window.location.search);
                     this.query = params.get('q');
-                    const res = await fetch("http://localhost:5000/server/search/" + this.query);
+                    const res = await fetch("/server/search/" + this.query);
                     this.games = await res.json();
                 }
             };

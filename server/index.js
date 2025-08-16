@@ -2,7 +2,7 @@ const express = require("express");
 const { title } = require("process");
 
 const app = express()
-const port = 5000
+const port = 5500
 
 app.use(require("cors")());
 
@@ -15,6 +15,9 @@ app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
 });
+
+// serve static files from the root directory
+app.use(express.static(require('path').join(__dirname, '../')));
 
 // all games
 app.get("/server/games", (req, res) => {
