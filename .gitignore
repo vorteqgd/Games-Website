@@ -1,0 +1,4 @@
+.vscode/
+.env
+embed/
+node_modules/

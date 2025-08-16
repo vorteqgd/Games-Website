@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>67 Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="nav">
+        <script src="nav.js"></script>
+        <script>createNav()</script>
+    </div>
+    <div x-data="app()" x-init="loadData()">
+
+        <!-- title -->
+        <div class="header">
+            <h1 class="title"><span x-text="tag"></span> games</h1>
+        </div>
+        <div class="main">
+
+            <!-- games -->
+            <div class="games">
+
+                <template x-for="game in games" :key="game.id">
+                    <div class="game" :style="`background-image: url(${game.thumbnail})`">
+                        <a :href="`game.html?id=${game.id}`" class="game-title" x-text="game.title"></a>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        function app() {
+            return {
+                games: [],
+                tag: "",
+                async loadData() {
+                    const params = new URLSearchParams(window.location.search);
+                    const tParam = params.get('t')
+
+                    const res = await fetch("http://localhost:5000/server/tag/" + tParam);
+                    const data = await res.json();
+
+                    this.tag = tParam.toString().charAt(0).toUpperCase() + String(tParam).slice(1);
+                    this.games = data;
+
+                    document.title = tParam + " games - 67 Games";
+                }
+            };
+        }
+    </script>
+</body>
+
+</html>

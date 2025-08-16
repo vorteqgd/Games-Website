@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>67 Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="search.css">
+</head>
+
+<body>
+    <div class="nav">
+        <script src="nav.js"></script>
+        <script>createNav()</script>
+    </div>
+    <div class="main" id="app" x-data="app()" x-init="loadData()">
+        <p>Results for "<span x-text="query"></span>"</p>
+        <template x-if="games.length === 0">
+            <div style="text-align: center;">
+                <h1>No results</h1>
+                <p>Try searching something else</p>
+            </div>
+        </template>
+        <div class="games" x-show="games.length !== 0">
+            <template x-for="game in games" :key="game.id">
+                <a :href="`game.html?id=${game.id}`" class="game-result">
+                    <img :src="game.thumbnail" alt="Thumbnail" class="game-thumb">
+                    <div class="game-info">
+                        <div class="game-result-title" x-text="game.title"></div>
+                        <p class="description" x-text="game.description">
+                        </p>
+                    </div>
+                </a>
+            </template>
+
+
+        </div>
+
+
+    </div>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+
+        function app() {
+
+            return {
+                games: [],
+                query: "",
+                async loadData() {
+                    const params = new URLSearchParams(window.location.search);
+                    this.query = params.get('q');
+                    const res = await fetch("http://localhost:5000/server/search/" + this.query);
+                    this.games = await res.json();
+                }
+            };
+        };
+    </script>
+</body>
+
+</html>

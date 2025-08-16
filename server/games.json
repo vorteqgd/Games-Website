@@ -1,0 +1,53 @@
+[
+    {
+        "title": "Hextris",
+        "id": "hextris",
+        "description": "Hextris is a simple reincarnation of Tetris in hexagon form. Meaning that colored lines will fall from six sides towards a central hexagon, and you need to rotate the hexagon to get the colors to match. When you eventually can't keep up, and the hexagon fills with colored lines, the game is over.",
+        "thumbnail": "thumbnail/hextris.png",
+        "tags": ["arcade", "tetris"]
+    },
+    {
+        "title": "Clumsy Bird",
+        "id": "clumsy_bird",
+        "description": "Left click on desktop or tap on mobile to flap Clumsy Bird's wings and fly upwards.",
+        "thumbnail": "thumbnail/clumsy_bird.png",
+        "tags": ["arcade", "one button"]
+    },
+    {
+        "title": "2048",
+        "id": "2048",
+        "description": "Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one. Try to beat your high score!",
+        "thumbnail": "thumbnail/2048.png",
+
+        "tags": ["puzzle", "math"]
+    },
+    {
+        "title": "Tiny Crate",
+        "id": "tiny_crate",
+        "description": "Tiny Crate is a deceptively challenging, frustrating, and beautiful 27-stage level escape game where you have to throw crates around to create a safe path to the exit.",
+        "thumbnail": "thumbnail/tiny_crate.png",
+        "tags": ["platformer", "puzzle"]
+    },
+    {
+        "title": "PolyDash",
+        "id": "polydash",
+        "description": "Clone of Geometry Dash",
+        "thumbnail": "thumbnail/polydash.png",
+        "tags": ["platformer", "one button"]
+    },
+    {
+        "title": "PolyTrack",
+        "id": "polytrack",
+        "description": "PolyTrack is a fast-paced, low-poly driving game featuring thrilling loops, jumps, and high-speed action where every millisecond counts. Inspired by TrackMania, it challenges you to race against the clock, constantly striving to improve your time on various tracks built by you and the Polytrack community! It doesn't get any more hands-on than that.",
+        "version": "0.4",
+        "thumbnail": "thumbnail/polytrack.png",
+        "tags": ["racing", "3d"]
+    },
+    {
+        "title": "Slope",
+        "id": "slope",
+        "description": "Slope game is a fantastic speed run game where you can drive a ball rolling on tons of slopes and obstacles. See how far you can go in this endless course.",
+        "thumbnail": "thumbnail/slope.png",
+        "tags": ["arcade", "3d", "endless runner"]
+    }
+]

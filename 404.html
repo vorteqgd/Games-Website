@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        button {
+            background-color: var(--accent);
+            box-shadow: 0 0 10px #55506599;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+
+        .box {
+            background-color: var(--nav);
+            width: 200px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <h1 class="title">404</h1>
+            <p>Page not found</p>
+            <button onclick="window.history.back()">Go back</button>
+        </div>
+    </div>
+</body>
+
+</html>

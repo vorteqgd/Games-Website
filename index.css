@@ -1,0 +1,21 @@
+.header {
+    margin-block: 70px;
+}
+
+.main {
+    text-align: center;
+}
+
+.title {
+    font-size: 60px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+}
+
+.games {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}

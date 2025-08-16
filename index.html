@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>67 Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="nav">
+        <script src="nav.js"></script>
+        <script>createNav()</script>
+    </div>
+
+    <div class="main" x-data="app()" x-init="loadData()">
+
+        <!-- tags -->
+        <h3 x-show="tags && tags.length"><i class="fa-solid fa-tag icon"></i>Popular Tags</h3>
+        <div class="tags-box" x-show="tags && tags.length">
+            <template x-for="tag in tags" :key="tag">
+                <a class="tag" :href="`tag.html?t=${tag}`" x-text="tag"></a>
+            </template>
+        </div>
+        <hr>
+
+        <!-- popular -->
+        <h3 id="popular"><i class="fa-solid fa-fire icon"></i>Popular</h3>
+        <div class="games">
+            <template x-for="game in popularGames" :key="game.id">
+                <div class="game" :style="`background-image: url(${game.thumbnail})`">
+                    <a :href="`game.html?id=${game.id}`" class="game-title">
+                        <span x-text="game.title"></span>
+                    </a>
+                </div>
+            </template>
+        </div>
+        <hr>
+
+        <!-- new -->
+        <h3 id="new"><i class="fa-solid fa-gamepad icon"></i>New</h3>
+        <div class="games">
+            <template x-for="game in newGames" :key="game.id">
+                <div class="game" :style="`background-image: url(${game.thumbnail})`">
+                    <a :href="`game.html?id=${game.id}`" class="game-title">
+                        <span x-text="game.title"></span>
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        function app() {
+            return {
+                popularGames: [],
+                newGames: [],
+                tags: [],
+
+                async loadData() {
+                    const [popularRes, newRes, tagsRes] = await Promise.all([
+                        fetch("http://localhost:5000/server/popular"),
+                        fetch("http://localhost:5000/server/new"),
+                        fetch("http://localhost:5000/server/popularTags")
+
+                    ]);
+
+                    this.popularGames = await popularRes.json();
+                    this.newGames = await newRes.json();
+                    this.tags = await tagsRes.json();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
