@@ -1,4 +1,8 @@
 .vscode/
 .env
+
 embed/
+thumbnail/
+zstuff.txt
+
 node_modules/
