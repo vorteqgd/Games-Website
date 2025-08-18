@@ -29,7 +29,7 @@
             <template x-if="game.tags && game.tags.length">
                 <div class="tags-box">
                     <template x-for="tag in game.tags" :key="tag">
-                        <a class="tag" :href="`tag.html?t=${tag}`" x-text="tag"></a>
+                        <a class="tag" :href="`tag?t=${tag}`" x-text="tag"></a>
                     </template>
                 </div>
             </template>
@@ -51,7 +51,7 @@
         <div class="suggested-box">
             <template x-for="game in games" :key="game.id">
                 <div class="game" :style="`background-image: url(${game.thumbnail})`">
-                    <a :href="`game.html?id=${game.id}`" class="game-title" x-text="game.title"></a>
+                    <a :href="`game?id=${game.id}`" class="game-title" x-text="game.title"></a>
                 </div>
             </template>
         </div>

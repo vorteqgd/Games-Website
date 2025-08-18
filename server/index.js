@@ -16,8 +16,24 @@ app.use((req, res, next) => {
     next();
 });
 
+// redirect .html just in case
+app.use((req, res, next) => {
+    if (req.path.endsWith(".html")) {
+
+        let newPath = req.path.slice(0, -5);
+
+        if (newPath === "/index") newPath = "/";
+
+        const query = req.url.slice(req.path.length);
+        return res.redirect(301, newPath + query);
+    }
+    next();
+});
+
 // serve static files from the root directory
-app.use(express.static(require('path').join(__dirname, '../')));
+app.use(express.static(require("path").join(__dirname, "../"), {
+    extensions: ["html"] // removes .html
+}));
 
 // all games
 app.get("/server/games", (req, res) => {
@@ -104,6 +120,14 @@ app.get("/server/search/:query", (req, res) => {
     });
 
     res.json(results);
+});
+
+
+// 404
+app.use((req, res) => {
+    res.status(404);
+
+    res.sendFile(require("path").join(__dirname, "../404.html"));
 });
 
 

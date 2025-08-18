@@ -27,7 +27,7 @@
 
                 <template x-for="game in games" :key="game.id">
                     <div class="game" :style="`background-image: url(${game.thumbnail})`">
-                        <a :href="`game.html?id=${game.id}`" class="game-title" x-text="game.title"></a>
+                        <a :href="`game?id=${game.id}`" class="game-title" x-text="game.title"></a>
                     </div>
                 </template>
 
