@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>67 Games</title>
+    <link rel="stylesheet" href="fs.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="main" x-data="app()" x-init="loadData()">
+        <iframe :src="game.embed ? game.embed : `embed/${game.id}`" frameborder="0"></iframe>
+        <div class="overlay">
+            <div>
+                <button onclick="window.history.back()">Back</button>
+                <br>
+                <button @click="
+    let elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    }
+  ">Fullscreen</button>
+                <br>
+                <button @click="dropdown = !dropdown">Info</button>
+                <div class="dropdown" x-show="dropdown">
+                    <b x-text="game.title"></b>
+                    <template x-for="tag in game.tags" :key="tag">
+                        <a :href="`tag?t=${tag}`" class="tag" x-text="tag"></a>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get('id');
+        function app() {
+            return {
+                game: {},
+                dropdown: false,
+
+                async loadData() {
+                    const gameRes = await fetch("/server/game/" + idParam);
+                    const data = await gameRes.json();
+                    this.game = data;
+
+                    document.title = this.game.title + " - 67 Games";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
