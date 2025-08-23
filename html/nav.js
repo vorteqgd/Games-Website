@@ -1,16 +1,16 @@
 const nav = `
-<a href="/index.html" class="nav-link">
+<a href="/" class="nav-link">
     <h3 class="nav-title">67 Games</h3>
 </a>
-<a href="/index.html" class="nav-link">
+<a href="/" class="nav-link">
     <i class="fa-solid fa-house-chimney nav-icon"></i>
     Home
 </a>
-<a href="/index.html#popular" class="nav-link">
+<a href="/#popular" class="nav-link">
     <i class="fa-solid fa-fire nav-icon"></i>
     Popular
 </a>
-<a href="/index.html#new" class="nav-link">
+<a href="/#new" class="nav-link">
     <i class="fa-solid fa-gamepad nav-icon"></i>
     New
 </a>
