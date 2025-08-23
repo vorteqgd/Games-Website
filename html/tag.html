@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>67 Games</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="nav">
-        <script src="nav.js"></script>
+        <script src="/nav.js"></script>
         <script>createNav()</script>
     </div>
     <div x-data="app()" x-init="loadData()">
-        
+
         <!-- title -->
         <div class="header">
-            <h1 class="title"><span x-text="name"></span> section</h1>
+            <h1 class="title"><span x-text="tag"></span> games</h1>
         </div>
         <div class="main">
 
@@ -27,7 +27,7 @@
 
                 <template x-for="game in games" :key="game.id">
                     <div class="game" :style="`background-image: url(${game.thumbnail})`">
-                        <a :href="`game?id=${game.id}`" class="game-title" x-text="game.title"></a>
+                        <a :href="`/game/${game.id}`" class="game-title" x-text="game.title"></a>
                     </div>
                 </template>
 
@@ -41,18 +41,19 @@
         function app() {
             return {
                 games: [],
-                name: "",
+                tag: "",
                 async loadData() {
-                    const params = new URLSearchParams(window.location.search);
-                    const sParam = params.get('s')
+                    const pathParts = window.location.pathname.split("/");
+                    const tParam = decodeURIComponent(pathParts[pathParts.length - 1]);
 
-                    const res = await fetch("/server/" + sParam);
+
+                    const res = await fetch("/server/tag/" + tParam);
                     const data = await res.json();
 
-                    this.name = sParam;
+                    this.tag = tParam.toString().charAt(0).toUpperCase() + String(tParam).slice(1);
                     this.games = data;
 
-                    document.title = sParam + " games - 67 Games";
+                    document.title = tParam + " games - 67 Games";
                 }
             };
         }

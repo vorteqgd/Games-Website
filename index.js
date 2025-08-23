@@ -1,5 +1,7 @@
 const express = require("express");
 const { title } = require("process");
+const path = require("path");
+
 
 const app = express()
 const port = 5500
@@ -31,8 +33,12 @@ app.use((req, res, next) => {
 });
 
 // serve static files from the root directory
-app.use(express.static(require("path").join(__dirname, "../"), {
-    extensions: ["html"] // removes .html
+app.use(express.static(__dirname, {
+    extensions: ["html"]
+}));
+
+app.use(express.static(path.join(__dirname, "html"), {
+  extensions: ["html"]
 }));
 
 // all games
@@ -123,11 +129,18 @@ app.get("/server/search/:query", (req, res) => {
 });
 
 
+app.get("/game/:id", (req, res) => { res.sendFile(path.join(__dirname, "/html/game.html")); });
+app.get("/tag/:t", (req, res) => { res.sendFile(path.join(__dirname, "/html/tag.html")); });
+app.get("/section/:s", (req, res) => { res.sendFile(path.join(__dirname, "/html/section.html")); });
+app.get("/search/:q", (req, res) => { res.sendFile(path.join(__dirname, "/html/search.html")); });
+app.get("/fs/:id", (req, res) => { res.sendFile(path.join(__dirname, "/html/fs.html")); });
+
+
 // 404
 app.use((req, res) => {
     res.status(404);
 
-    res.sendFile(require("path").join(__dirname, "../404.html"));
+    res.sendFile(require("path").join(__dirname, "/404.html"));
 });
 
 

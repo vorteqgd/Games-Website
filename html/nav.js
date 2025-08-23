@@ -1,20 +1,20 @@
 const nav = `
-<a href="index.html" class="nav-link">
+<a href="/index.html" class="nav-link">
     <h3 class="nav-title">67 Games</h3>
 </a>
-<a href="index.html" class="nav-link">
+<a href="/index.html" class="nav-link">
     <i class="fa-solid fa-house-chimney nav-icon"></i>
     Home
 </a>
-<a href="index.html#popular" class="nav-link">
+<a href="/index.html#popular" class="nav-link">
     <i class="fa-solid fa-fire nav-icon"></i>
     Popular
 </a>
-<a href="index.html#new" class="nav-link">
+<a href="/index.html#new" class="nav-link">
     <i class="fa-solid fa-gamepad nav-icon"></i>
     New
 </a>
-<a href="random.html" class="nav-link">
+<a href="/random.html" class="nav-link">
     <i class="fa-solid fa-random nav-icon"></i>
     Random
 </a>
@@ -37,7 +37,7 @@ function createNav() {
     function goSearch() {
         const query = encodeURIComponent(searchbar.value.trim());
         if (query) {
-            window.location.href = `search.html?q=${query}`;
+            window.location.href = `/search/${query}`;
         }
     }
 

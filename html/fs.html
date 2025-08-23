@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>67 Games</title>
-    <link rel="stylesheet" href="fs.css">
+    <link rel="stylesheet" href="/css/fs.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="main" x-data="app()" x-init="loadData()">
-        <iframe :src="game.embed ? game.embed : `embed/${game.id}`" frameborder="0"></iframe>
+        <iframe :src="game.embed ? game.embed : `/embed/${game.id}`" frameborder="0"></iframe>
         <div class="overlay">
             <div>
                 <button onclick="window.history.back()">Back</button>
@@ -31,7 +31,7 @@
                 <div class="dropdown" x-show="dropdown">
                     <b x-text="game.title"></b>
                     <template x-for="tag in game.tags" :key="tag">
-                        <a :href="`tag?t=${tag}`" class="tag" x-text="tag"></a>
+                        <a :href="`/tag/${tag}`" class="tag" x-text="tag"></a>
                     </template>
                 </div>
             </div>
@@ -40,8 +40,9 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const idParam = params.get('id');
+        const pathParts = window.location.pathname.split("/");
+        const idParam = pathParts[pathParts.length - 1];
+
         function app() {
             return {
                 game: {},

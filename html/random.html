@@ -12,7 +12,7 @@
         fetch("/server/ids")
             .then(response => response.json())
             .then(data => {
-                window.location.href = `game?id=${data[Math.floor(Math.random() * data.length)]}`
+                window.location.href = `/game/${data[Math.floor(Math.random() * data.length)]}`
             })
     </script>
 </body>
