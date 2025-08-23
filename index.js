@@ -140,7 +140,7 @@ app.get("/fs/:id", (req, res) => { res.sendFile(path.join(__dirname, "/html/fs.h
 app.use((req, res) => {
     res.status(404);
 
-    res.sendFile(require("path").join(__dirname, "/404.html"));
+    res.sendFile(require("path").join(__dirname, "/html/404.html"));
 });
 
 
